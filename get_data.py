@@ -1,4 +1,5 @@
 from read_data import read_csv_data
+import pathlib as pl
 
 def get_data(data):
     """
@@ -17,5 +18,15 @@ def get_data(data):
     height = []
     
     # WRITE YOUR CODE HERE
+    for i in data[1:]:
+        if i[0]=='Male':
+            gender.append(0)
+        else:
+            gender.append(1)
+        weight.append(float(i[2]) / 2.205)
+        height.append(float(i[1]) * 2.54)
 
     return gender,weight,height
+
+path = pl.Path('data') / 'weight-height.csv'
+data = read_csv_data(path)
